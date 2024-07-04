@@ -15,7 +15,7 @@ def starting_page():
 
 @main.route('/home')
 @main.route('/home_page')
-@login_required
+ 
 def home_page():
     return render_template('home_page.html')
 
