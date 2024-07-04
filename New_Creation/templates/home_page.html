@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block title %}
+  Home Page
+{% endblock %}
+
+{% block content %}
+<style>
+  Img{
+    width: 70%; 
+    border-radius: 10px;
+    border: 2px solid #02112b;
+  }
+  Img:hover{
+    width:71%;
+    border: none;
+    transition: 10ms;
+  }
+
+  @media screen and (min-width:770px){
+
+   Img{
+    width: 50%; 
+    border-radius: 10px;
+    border: 2px solid #02112b;
+  }
+  Img:hover{
+    width:51%;
+    border: none;
+    transition: 10ms;
+  }
+   
+  }
+
+  h2 {
+  text-align: center;
+  border: 2px solid #333;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 24px;
+  font-weight: 600;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  border-left: none;
+  border-right: none;
+  color: rgb(106, 221, 182);
+  background-color: black;
+}
+</style>
+
+<div style="text-align: center;">
+            
+       <h2>Click On the image to view details</h2>
+       <div >
+          <a href="{{ url_for('Food_details.foods_template') }}">
+             <image src="{{ url_for('static', filename='foodsworld.jpg')}}" class="Img" >  
+          </a>   
+       </div>
+       <br>
+
+       <div>
+        <a href="{{url_for('Shoe_details.shoe_template')}}" >
+           <image src="{{ url_for('static', filename='shoe.avif')}}" class="Img" >
+        </a>
+       </div>
+       <br>
+
+       <div >
+         <a href="{{url_for('Haircut_details.Haircut_shop_template')}}">
+            <image src="{{ url_for('static', filename='barbershop.jpg')}}" class="Img">
+         </a>
+        </div>
+        <br>
+     
+       <div >
+        <a href="#">
+           <image src="{{ url_for('static', filename='Tourist Spots.jpeg')}}" class="Img" >
+        </a>
+       </div>
+       <br>
+
+       
+
+       <div >
+        <a href="#">
+         <image src="{{ url_for('static', filename='Bus photo.jpg')}}" class="Img" >
+        </a>
+       </div>
+       <br>
+       <br>
+       
+</div>
+     
+{% endblock %}

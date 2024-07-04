@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+ Shops template Page
+{% endblock %}
+
+
+{% block content %}
+<div   style="padding-top:15rem ; padding-left: 40%; padding-bottom: 10rem; font-size: larger;">
+<form action="/shoe_shop_page" method="POST" enctype="multipart/form-data">
+    <div >
+     <input type="text" value="{{Slink}}" name="Slink" style="display: none;">
+
+    <label for="Price">Select Price => </label>
+    <select id="Price" name="PR1">
+        <option value="10000">default</option>
+        <option value="300">Below ₹300</option>
+        <option value="500">Below ₹500</option>
+        <option value="800">Below ₹800</option>
+        <option value="1000">Below ₹1000</option>
+        <option value="1500">Below ₹1500</option>
+        <option value="2000">Below ₹2000</option>
+        <option value="3000">Below ₹3000</option>
+    </select>
+    <br>
+
+    <label for="P">Select Place => </label>
+    <select id="P" name="PL1"> 
+        <option value="Bagayam">Bagayam</option>
+        <option value="New Bustand">New Bustand</option>
+        <option value="Old Bustand">Old Bustand</option>
+    </select> 
+    <br>
+    <label for="D">Select District => </label>
+    <select id="C" name="DI1"> 
+        <option value="">Select</option>
+        <option value="Vellore">Vellore</option>
+        <option value="Ranipet">Ranipet</option>
+        <option value="Dindigul">Dindigul</option>
+    </select> 
+</div>
+<div style="padding-top: 15px; padding-left: 8%;">
+       <button style="padding: 5px; border-radius: 8px; padding-left: 15px; padding-right: 15px;" type="submit" >Filter</button> 
+</div>
+</form>
+</div>
+{% endblock %}

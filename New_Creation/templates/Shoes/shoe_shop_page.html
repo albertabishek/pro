@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block title %}
+  Shops Page
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+  #image{
+    width: 100%;
+    height:200px;
+    border: 2px solid black; 
+    margin-top:5%;
+  }
+
+  .img_contents{
+    background-color:black;
+    color: aliceblue; 
+    padding: 10px; 
+    height: 50%;
+    width: 100%;
+    text-align: center; 
+    border-radius:5px; 
+  }
+  
+</style>
+
+
+ <div class="container" >
+  <div class="row" >
+
+  {% for shoe in shopies %}
+      {% if Slink == shoe.S_tag %}
+        {% if shoe.price <= Price %} 
+          {% if District %}
+            {% if shoe.D_tag == District %} 
+              {% if Place == shoe.P_tag %}
+
+              <div class="col-sm-4" style="display: inline-block; ">
+
+                <div>
+                      <img src="{{ url_for('Shoe_details.uploaded_file', filename=shoe.filename)}}" class="img img-thumbnail" id="image" />
+                      <div class="img_contents" >
+                         <div id="title" style="display: flex; margin-left: 0px; justify-content: space-between;">
+                            <h5>Shop Name : {{ shoe.Shop_name }}</h5>
+                            <h5><i>₹{{shoe.price}}</i></h5>
+                      </div>
+                      <div id="title" style="display: flex; margin-left: 0px; justify-content: space-between;">
+                            <h5>Quality : {{ shoe.Quality }}</h5>
+                            <details>
+                               <summary>Location</summary>
+                               <p>{{shoe.location_text}}</p>
+                            </details>
+                      </div>
+                         
+                      <div style="display: flex; justify-content: space-around; padding-top: 5px;">
+                        <details> 
+                          <summary>Give ratings</summary>
+                            <form action="/shoe_ratings" method="POST" enctype="multipart/form-data">
+                              <div class="form-group" >
+                                 <input type="text" style="display: none;" value="{{shoe.Shop_name + shoe.S_tag}}" name="sname">
+                                 <label for="rate">Give ratings :</label>
+                                 <input type="range" id="rate"  name="Rating" min="0.5" max="5.5" value="5" oninput="this.nextElementSibling.value = this.value">
+                                 <output>5</output>
+                              </div>
+                                <button type="submit" class="btn btn-dark">Submit</button> 
+                            </form> 
+                        </details>
+                        <div>
+                          <details>
+                            <summary>Contact InFo</summary>
+                            <h6>{{shoe.contact_Info}}</h6>
+                          </details>
+                        </div>
+                        <div >
+                          <a href="{{shoe.location_link}}">🗺️view Location</a>
+                        </div>
+                      </div>
+                   </div> 
+                 </div>
+              </div>
+      
+              {% endif %}
+            {% endif %}
+          {% else %}
+          {% if Place == shoe.P_tag %}
+
+            <div class="col-sm-4" style="display: inline-block; ">
+
+              <div>
+                    <img src="{{ url_for('Shoe_details.S_uploaded_file', filename=shoe.filename)}}" class="img img-thumbnail" id="image" />
+                    <div class="img_contents" >
+                       <div id="title" style="display: flex; margin-left: 0px; justify-content: space-between;">
+                          <h5>Shop Name : {{ shoe.Shop_name }}</h5>
+                          <h5><i>₹{{shoe.price}}</i></h5>
+                    </div>
+                    <div id="title" style="display: flex; margin-left: 0px; justify-content: space-between;">
+                          <h5>Quality : {{ shoe.Quality }}</h5>
+                          <details>
+                             <summary>Location</summary>
+                             <p>{{shoe.location_text}}</p>
+                          </details>
+                    </div>
+                       
+                    <div style="display: flex; justify-content: space-around; padding-top: 5px;">
+                      <details> 
+                        <summary>Give ratings</summary>
+                          <form action="/shoe_ratings" method="POST" enctype="multipart/form-data">
+                            <div class="form-group" >
+                               <input type="text" style="display: none;" value="{{shoe.Shop_name + shoe.S_tag}}" name="sname">
+                               <label for="rate">Give ratings :</label>
+                               <input type="range" id="rate"  name="Rating" min="0.5" max="5.5" value="5" oninput="this.nextElementSibling.value = this.value">
+                               <output>5</output>
+                            </div>
+                              <button type="submit" class="btn btn-dark">Submit</button> 
+                          </form> 
+                      </details>
+                      <div>
+                        <details>
+                          <summary>Contact InFo</summary>
+                          <h6>{{shoe.contact_Info}}</h6>
+                        </details>
+                      </div>
+                      <div >
+                        <a href="{{shoe.location_link}}">🗺️view Location</a>
+                      </div>
+                    </div>
+                 </div> 
+               </div>
+            </div>
+
+            {% endif%}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+  {% endfor %}
+
+  </div>
+</div>
+{% endblock %}

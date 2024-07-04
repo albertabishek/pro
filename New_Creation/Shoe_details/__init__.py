@@ -1,0 +1,1 @@
+from .routes import S_uploaded_file,shoe_adding_page,shoe_rating_data,shoe_shop_adding_page,shoe_shop_page,shoe_shop_template,shoe_shop_upload_page,shoe_template,shoe_upload_page,shoes_page

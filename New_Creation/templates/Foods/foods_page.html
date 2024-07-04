@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+  Foods List Page
+{% endblock %}
+
+
+{% block content %}
+<style>
+
+  #image{
+    width: 100%;
+    height:80%;
+    border: 2px solid black; 
+    margin-top:5%;
+  }
+
+  #img_name{
+    background-color:black;
+    color: aliceblue; 
+    padding: 10px; 
+    text-align: center; 
+    border-radius:5px; 
+    font-size: 25px;
+     
+  }
+  #img_name:hover{
+
+    font-size: 26px;
+    
+  }
+  .ins{
+    display: none;
+  }
+  #bu{
+     border-radius: 20px;
+     color: aliceblue;
+     background-color: black;
+  }
+  
+  
+
+</style>
+
+
+ <div class="container" >
+       
+  <div class="row" >
+    {% for food in files %}
+      {% if C1==food.category_1 %}
+         
+        <div class="col-sm-4" style="display: inline-block; ">
+            <div>
+              <img src="{{ url_for('Food_details.F_uploaded_file', filename=food.filename)}}"class="img img-thumbnail" id="image" />
+              <div id="img_name" >
+                <form  action="/food_shop_template" method="POST" enctype="multipart/form-data">
+                  <input type="text" class="ins" name="Fname" value="{{food.link}}"> 
+                  <button type="submit" id="bu">{{food.name}}</button>
+                </form>
+              </div>
+            </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+     </div>
+    </div>
+{% endblock %}

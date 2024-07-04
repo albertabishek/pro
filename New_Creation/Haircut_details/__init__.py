@@ -1,0 +1,1 @@
+from .routes import H_uploaded_file,Haircut_details,Haircut_rating_data,Haircut_Ratings,Haircut_shop_adding_page,Haircut_shop_page,Haircut_shop_template,Haircut_shop_upload_page,Haircut_Shops
